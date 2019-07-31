@@ -4,7 +4,7 @@ import Namicorn from "namicorn";
 const NO_ADDRESS_FOUND = "No Address Found";
 
 const App = () => {
-    const namicorn = new Namicorn();
+    const namicorn = new Namicorn({ blockchain: true });
     const [selectedCoin, setSelectedCoin] = useState("ZIL");
     const [userInput, setUserInput] = useState("");
     const [address, setAddress] = useState();
@@ -40,9 +40,20 @@ const App = () => {
         ) {
             namicorn
                 .resolve(tempUserInput)
-                .then(({ addresses }) => setAddress(addresses))
+                .then(response => {
+                    console.log(response);
+                    return setAddress(response.addresses);
+                })
                 .catch(e => console.error(e));
-        }
+            // namicorn
+            //     .address(tempUserInput, selectedCoin)
+            //     .then(response => {
+            //         console.log({ response, tempUserInput, selectedCoin });
+            //         console.log({ ETH: response });
+            //         return setAddress({ ETH: response });
+            //     })
+            //     .catch(e => console.error(e));
+        } else setAddress(null);
     };
 
     const renderSearchBar = () => (
@@ -66,7 +77,9 @@ const App = () => {
     const renderResults = () => (
         <>
             <span className="Title">
-                {!address ? "" : address[selectedCoin] || NO_ADDRESS_FOUND}
+                {!address
+                    ? "Looking"
+                    : address[selectedCoin] || NO_ADDRESS_FOUND}
             </span>
         </>
     );

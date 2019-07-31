@@ -6972,10 +6972,10 @@ mute-stream@0.0.7:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
   integrity sha1-MHXOk7whuPq0PhvE2n6BFe0ee6s=
 
-namicorn@^0.2.17:
-  version "0.2.17"
-  resolved "https://registry.yarnpkg.com/namicorn/-/namicorn-0.2.17.tgz#6c4e25c3c8621697ea9b52314739090af535f816"
-  integrity sha512-f5XjIRw1OxOi5ZHhEU+5TcRY+PNlak/5peZJoC+rsbZaa4MXnl91S1iZhwK2zbwf+B0r1FmEJjD9OGeyhvtfzg==
+namicorn@^0.2.18:
+  version "0.2.18"
+  resolved "https://registry.yarnpkg.com/namicorn/-/namicorn-0.2.18.tgz#80d0a0582afc06db7c1b7a7961ec6ae1f5dff2a3"
+  integrity sha512-4xNzf6oGuJFcOFqFlcv5Qt+YIe8gEbNwu2fjcuy7V3SQCAjZBgfPe+yMdu+a0lSQICzsm/Ff99nurYaILzpsjQ==
   dependencies:
     "@zilliqa-js/zilliqa" "^0.7.2"
     eth-ens-namehash "^2.0.8"

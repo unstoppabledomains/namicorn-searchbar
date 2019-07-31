@@ -8,6 +8,11 @@ body,
     width: 100%;
 }
 
+.FormInput {
+    display: inline-flex;
+    width: 100%;
+}
+
 .App {
     text-align: center;
 }
@@ -133,7 +138,8 @@ body {
 
 .Input-text {
     display: block;
-    margin: 0;
+    box-shadow: rgb(99, 70, 185) 1.7787px 7;
+    margin: 0 5px 0 0;
     padding: var(--inputPaddingV) var(--inputPaddingH);
     color: inherit;
     width: 100%;
@@ -148,6 +154,11 @@ body {
 
 .Input-text::placeholder {
     color: #b0bec5;
+}
+
+.Submit-button {
+    box-shadow: rgb(99, 70, 185) 1.7787px 7;
+    border-radius: 5px;
 }
 
 .Input-text:focus {

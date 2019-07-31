@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Namicorn from "namicorn";
 
-const NO_ADDRESS_FOUND = "No Address Found";
+const NO_ADDRESS_FOUND = "No Address found for selected coin,";
 const INVALID_DOMAIN = "Invalid Domain";
 
 const App = () => {
@@ -74,7 +74,7 @@ const App = () => {
     const renderSearchBar = () => (
         <div className="Wrapper">
             <div className="Input">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="FormInput">
                     <input
                         type="text"
                         id="input"
@@ -86,7 +86,9 @@ const App = () => {
                     <label htmlFor="input" className="Input-label">
                         Domain name
                     </label>
-                    <button onSubmit={handleSubmit}>Submit</button>
+                    <button onSubmit={handleSubmit} className="Submit-button">
+                        Submit
+                    </button>
                 </form>
             </div>
         </div>

@@ -2,12 +2,27 @@ import React, { useState } from "react";
 import Namicorn from "namicorn";
 
 const NO_ADDRESS_FOUND = "No Address Found";
+const INVALID_DOMAIN = "Invalid Domain";
 
 const App = () => {
     const namicorn = new Namicorn();
     const [selectedCoin, setSelectedCoin] = useState("ZIL");
     const [userInput, setUserInput] = useState("");
-    const [address, setAddress] = useState();
+    const [loadingSpinner, setLoadingSpinner] = useState(false);
+    const [domainInfo, setDomainInfo] = useState(null);
+
+    const _renderSpinner = () => (
+        <div className="lds-roller">
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+        </div>
+    );
 
     const _renderRadioButton = ({ value }) => (
         <label className="Title" style={{ margin: "5px" }}>
@@ -32,15 +47,26 @@ const App = () => {
 
     const handleUserInput = e => {
         const tempUserInput = e.target.value;
+        if (tempUserInput === "") setDomainInfo(null);
         setUserInput(tempUserInput);
-        const potentialDomain = e.target.value.split(".");
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const potentialDomain = userInput.split(".");
         if (
             potentialDomain.length > 1 &&
-            potentialDomain[potentialDomain.length - 1].length === 3
+            potentialDomain[potentialDomain.length - 1].length > 1
         ) {
+            setLoadingSpinner(true);
+            setDomainInfo(null);
             namicorn
-                .resolve(tempUserInput)
-                .then(({ addresses }) => setAddress(addresses))
+                .resolve(userInput)
+                .then(domainInfo => {
+                    console.log({ domainInfo });
+                    setDomainInfo(domainInfo);
+                    setLoadingSpinner(false);
+                })
                 .catch(e => console.error(e));
         }
     };
@@ -48,25 +74,33 @@ const App = () => {
     const renderSearchBar = () => (
         <div className="Wrapper">
             <div className="Input">
-                <input
-                    type="text"
-                    id="input"
-                    className="Input-text"
-                    placeholder="Please enter domain you wish to inspect"
-                    value={userInput}
-                    onChange={handleUserInput}
-                />
-                <label htmlFor="input" className="Input-label">
-                    Domain name
-                </label>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        id="input"
+                        className="Input-text"
+                        placeholder="Please enter domain you wish to inspect"
+                        value={userInput}
+                        onChange={handleUserInput}
+                    />
+                    <label htmlFor="input" className="Input-label">
+                        Domain name
+                    </label>
+                    <button onSubmit={handleSubmit}>Submit</button>
+                </form>
             </div>
         </div>
     );
 
     const renderResults = () => (
         <>
+            {loadingSpinner ? _renderSpinner() : null}
             <span className="Title">
-                {!address ? "" : address[selectedCoin] || NO_ADDRESS_FOUND}
+                {!domainInfo
+                    ? ""
+                    : domainInfo.meta.owner === null
+                    ? INVALID_DOMAIN
+                    : domainInfo.addresses[selectedCoin] || NO_ADDRESS_FOUND}
             </span>
         </>
     );

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import Namicorn from "namicorn";
 
 const NO_ADDRESS_FOUND = "No Address found for selected coin,";
+const NOT_REGISTERED = "Domain is not registered";
 const INVALID_DOMAIN = "Invalid Domain";
 
 const App = () => {
-    const namicorn = new Namicorn({ blockchain: true });
+    const namicorn = new Namicorn();
     const [selectedCoin, setSelectedCoin] = useState("ZIL");
     const [userInput, setUserInput] = useState("");
     const [loadingSpinner, setLoadingSpinner] = useState(false);
@@ -47,7 +48,10 @@ const App = () => {
 
     const handleUserInput = e => {
         const tempUserInput = e.target.value;
-        if (tempUserInput === "") setDomainInfo(null);
+        if (tempUserInput === "") {
+            setDomainInfo(null);
+            if (loadingSpinner) setLoadingSpinner(false);
+        }
         setUserInput(tempUserInput);
     };
 
@@ -68,7 +72,7 @@ const App = () => {
                     setLoadingSpinner(false);
                 })
                 .catch(e => console.error(e));
-        } else setDomainInfo(null);
+        } else setDomainInfo({ invalid: true });
     };
 
     const renderSearchBar = () => (
@@ -100,8 +104,10 @@ const App = () => {
             <span className="Title">
                 {!domainInfo
                     ? ""
-                    : domainInfo.meta.owner === null
+                    : domainInfo.invalid
                     ? INVALID_DOMAIN
+                    : domainInfo.meta.owner === null
+                    ? NOT_REGISTERED
                     : domainInfo.addresses[selectedCoin] || NO_ADDRESS_FOUND}
             </span>
         </>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Namicorn from "namicorn";
 
-const NO_ADDRESS_FOUND = "No Address found for selected coin,";
+const NO_ADDRESS_FOUND = "No Address found for selected coin";
 const NOT_REGISTERED = "Domain is not registered";
 const INVALID_DOMAIN = "Invalid Domain";
 
@@ -60,14 +60,13 @@ const App = () => {
         const potentialDomain = userInput.split(".");
         if (
             potentialDomain.length > 1 &&
-            potentialDomain[potentialDomain.length - 1].length > 1
+            potentialDomain[potentialDomain.length - 1].length > 0
         ) {
             setLoadingSpinner(true);
             setDomainInfo(null);
             namicorn
                 .resolve(userInput)
                 .then(domainInfo => {
-                    console.log({ domainInfo });
                     setDomainInfo(domainInfo);
                     setLoadingSpinner(false);
                 })

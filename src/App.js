@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Namicorn from "namicorn";
+import "./App.css";
 
 const NO_ADDRESS_FOUND = "No Address found for selected coin";
 const NOT_REGISTERED = "Domain is not registered";
@@ -7,7 +8,6 @@ const INVALID_DOMAIN = "Invalid Domain";
 
 const App = () => {
     const namicorn = new Namicorn();
-    const [selectedCoin, setSelectedCoin] = useState("ZIL");
     const [userInput, setUserInput] = useState("");
     const [loadingSpinner, setLoadingSpinner] = useState(false);
     const [domainInfo, setDomainInfo] = useState(null);
@@ -23,27 +23,6 @@ const App = () => {
             <div />
             <div />
         </div>
-    );
-
-    const _renderRadioButton = ({ value }) => (
-        <label className="Title" style={{ margin: "5px" }}>
-            <input
-                type="radio"
-                name="selectedCoin"
-                id={value}
-                onChange={e => setSelectedCoin(e.target.id)}
-                checked={selectedCoin === value}
-            />
-            {value}
-        </label>
-    );
-
-    const renderRadioButtons = () => (
-        <>
-            {_renderRadioButton({ value: "ZIL" })}
-            {_renderRadioButton({ value: "ETH" })}
-            {_renderRadioButton({ value: "BTC" })}
-        </>
     );
 
     const handleUserInput = e => {
@@ -64,13 +43,15 @@ const App = () => {
         ) {
             setLoadingSpinner(true);
             setDomainInfo(null);
-            namicorn
-                .resolve(userInput)
-                .then(domainInfo => {
-                    setDomainInfo(domainInfo);
-                    setLoadingSpinner(false);
-                })
-                .catch(e => console.error(e));
+            if (window !== "undefined") {
+                namicorn
+                    .resolve(userInput)
+                    .then(domainInfo => {
+                        setDomainInfo(domainInfo);
+                        setLoadingSpinner(false);
+                    })
+                    .catch(e => console.error(e));
+            }
         } else setDomainInfo({ invalid: true });
     };
 
@@ -86,9 +67,6 @@ const App = () => {
                         value={userInput}
                         onChange={handleUserInput}
                     />
-                    <label htmlFor="input" className="Input-label">
-                        Domain name
-                    </label>
                     <button onSubmit={handleSubmit} className="Submit-button">
                         Submit
                     </button>
@@ -97,18 +75,44 @@ const App = () => {
         </div>
     );
 
+    const _renderAddresses = addresess => {
+        const result = [];
+        for (let coin in addresess) {
+            if (addresess.hasOwnProperty(coin))
+                result.push(
+                    <div className="resultAddressesRow" key={addresess[coin]}>
+                        <span
+                            key={addresess[coin]}
+                            className="Title"
+                            style={{ fontWeight: "bold" }}
+                        >
+                            {coin} :{" "}
+                        </span>
+                        <span
+                            key={coin}
+                            style={{ fontStyle: "italic" }}
+                            className="Title"
+                        >
+                            {addresess[coin]}
+                        </span>
+                    </div>
+                );
+        }
+        return <div className="resultAddresses">{result}</div>;
+    };
+
     const renderResults = () => (
         <>
             {loadingSpinner ? _renderSpinner() : null}
-            <span className="Title">
-                {!domainInfo
-                    ? ""
-                    : domainInfo.invalid
-                    ? INVALID_DOMAIN
-                    : domainInfo.meta.owner === null
-                    ? NOT_REGISTERED
-                    : domainInfo.addresses[selectedCoin] || NO_ADDRESS_FOUND}
-            </span>
+            {!domainInfo ? (
+                ""
+            ) : domainInfo.invalid ? (
+                <span className="Title"> {INVALID_DOMAIN} </span>
+            ) : domainInfo.meta.owner === null ? (
+                <span className="Title"> {NOT_REGISTERED}</span>
+            ) : (
+                _renderAddresses(domainInfo.addresses) || NO_ADDRESS_FOUND
+            )}
         </>
     );
 
@@ -117,7 +121,6 @@ const App = () => {
             <div className="header">
                 <h1 className="Title">Domain Name Resolution example</h1>
             </div>
-            <div className="radioButtons">{renderRadioButtons()}</div>
             <div className="searchBar">{renderSearchBar()}</div>
             <div className="results">{renderResults()}</div>
         </div>

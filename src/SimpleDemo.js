@@ -9,7 +9,7 @@ const Demo = () => {
 	const namicorn = new Namicorn();
 	const [userInput, setUserInput] = useState("");
 	const [loadingSpinner, setLoadingSpinner] = useState(false);
-	const [domainInfo, setDomainInfo] = useState('');
+	const [domainInfo, setDomainInfo] = useState();
 	const [selectedCoin, setSelectedCoin] = useState('BTC');
 
 
@@ -64,12 +64,12 @@ const Demo = () => {
 			<div className="resultAddressesRow">
 				<span
 
-					className="Title"
+					className="simpleTitle"
 					style={{ fontWeight: "bold" }}
 				>
 					{selectedCoin} :{" "}
 				</span>
-				<span style={{ fontStyle: "italic" }} className="Title">
+				<span style={{ fontStyle: "italic" }} className="simpleTitle">
 					{addresess}
 				</span>
 			</div>
@@ -110,12 +110,15 @@ const Demo = () => {
 
 	const renderRadioButtons = () => {
 
-		const radioHandler = (e) => setSelectedCoin(e.target.value);
+		const radioHandler = (e) => {
+			setDomainInfo(null);
+			setSelectedCoin(e.target.value);
+		};
 
 
 		return (
 			<form className="radioForm">
-				<label className="Title">
+				<label className="simpleTitle">
 					<input
 						type="radio" name="selectedCoin"
 						value="BTC" checked={selectedCoin === "BTC"}
@@ -123,7 +126,7 @@ const Demo = () => {
 					/>
 					BTC
 				</label>
-				<label className="Title">
+				<label className="simpleTitle">
 					<input
 						type="radio" name="selectedCoin"
 						checked={selectedCoin === "ETH"}
@@ -138,7 +141,7 @@ const Demo = () => {
 	return (
 		<div className="Demo">
 			<div className="header">
-				<h1 className="Title">Domain Name Resolution example</h1>
+				<h1 className="simpleTitle">Domain Name Resolution example</h1>
 			</div>
 			<div className="selection">{renderRadioButtons()}</div>
 			<div className="searchBar">{renderSearchBar()}</div>

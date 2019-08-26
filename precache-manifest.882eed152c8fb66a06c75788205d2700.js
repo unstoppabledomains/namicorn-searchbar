@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "839132c4f1293bb1231ed93a2fea1bf3",
+    "revision": "ddd3cb1405d147e4aef45d25b6a995ab",
     "url": "/namicorn-searchbar/index.html"
   },
   {
-    "revision": "a71a31a42219415b9f93",
-    "url": "/namicorn-searchbar/static/css/main.0a113fd5.chunk.css"
+    "revision": "e1c44f00bcb2d89bdbf6",
+    "url": "/namicorn-searchbar/static/css/main.182c25be.chunk.css"
   },
   {
     "revision": "57038b32bbcd6799894e",
     "url": "/namicorn-searchbar/static/js/2.4bf0655c.chunk.js"
   },
   {
-    "revision": "a71a31a42219415b9f93",
-    "url": "/namicorn-searchbar/static/js/main.db515663.chunk.js"
+    "revision": "e1c44f00bcb2d89bdbf6",
+    "url": "/namicorn-searchbar/static/js/main.cb7e0ec6.chunk.js"
   },
   {
     "revision": "e8bafcd0f3191c310a2c",

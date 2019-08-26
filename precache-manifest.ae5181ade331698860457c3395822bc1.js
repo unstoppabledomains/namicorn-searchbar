@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6c2c594f5d09adcaf8c15d64db81dc6b",
+    "revision": "41d14d7b37bd4fd635dd2c32870a7ad2",
     "url": "/namicorn-searchbar/index.html"
   },
   {
-    "revision": "15f7a8661819ed21cf2e",
+    "revision": "1d39936976d5c1a5809d",
     "url": "/namicorn-searchbar/static/css/main.0a113fd5.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/namicorn-searchbar/static/js/2.7507eaa1.chunk.js"
   },
   {
-    "revision": "15f7a8661819ed21cf2e",
-    "url": "/namicorn-searchbar/static/js/main.2e046409.chunk.js"
+    "revision": "1d39936976d5c1a5809d",
+    "url": "/namicorn-searchbar/static/js/main.61651f23.chunk.js"
   },
   {
     "revision": "e8bafcd0f3191c310a2c",

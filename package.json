@@ -4,7 +4,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"namicorn": "^0.2.18",
+		"namicorn": "^0.2.26",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
 		"react-router-dom": "^5.0.1",

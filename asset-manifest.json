@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/namicorn-searchbar/static/css/main.182c25be.chunk.css",
-    "main.js": "/namicorn-searchbar/static/js/main.cb7e0ec6.chunk.js",
-    "main.js.map": "/namicorn-searchbar/static/js/main.cb7e0ec6.chunk.js.map",
+    "main.js": "/namicorn-searchbar/static/js/main.09b24539.chunk.js",
+    "main.js.map": "/namicorn-searchbar/static/js/main.09b24539.chunk.js.map",
     "runtime~main.js": "/namicorn-searchbar/static/js/runtime~main.e71deda6.js",
     "runtime~main.js.map": "/namicorn-searchbar/static/js/runtime~main.e71deda6.js.map",
-    "static/js/2.4bf0655c.chunk.js": "/namicorn-searchbar/static/js/2.4bf0655c.chunk.js",
-    "static/js/2.4bf0655c.chunk.js.map": "/namicorn-searchbar/static/js/2.4bf0655c.chunk.js.map",
+    "static/js/2.f4fc297d.chunk.js": "/namicorn-searchbar/static/js/2.f4fc297d.chunk.js",
+    "static/js/2.f4fc297d.chunk.js.map": "/namicorn-searchbar/static/js/2.f4fc297d.chunk.js.map",
     "index.html": "/namicorn-searchbar/index.html",
-    "precache-manifest.882eed152c8fb66a06c75788205d2700.js": "/namicorn-searchbar/precache-manifest.882eed152c8fb66a06c75788205d2700.js",
+    "precache-manifest.173e3e445dfa05d6a246c9fcf76cab99.js": "/namicorn-searchbar/precache-manifest.173e3e445dfa05d6a246c9fcf76cab99.js",
     "service-worker.js": "/namicorn-searchbar/service-worker.js",
     "static/css/main.182c25be.chunk.css.map": "/namicorn-searchbar/static/css/main.182c25be.chunk.css.map"
   }

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/namicorn-searchbar/precache-manifest.882eed152c8fb66a06c75788205d2700.js"
+  "/namicorn-searchbar/precache-manifest.173e3e445dfa05d6a246c9fcf76cab99.js"
 );
 
 self.addEventListener('message', (event) => {

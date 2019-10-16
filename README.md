@@ -1,3 +1,7 @@
+
+# DEPRICATED AS OF OCTOBER 2019
+
+
 # namicorn-searchbar
 
 This is a sample project on [namicorn](https://github.com/unstoppabledomains/namicorn) crypto currency address resolution API.
